@@ -7,4 +7,4 @@ const ProductSchema = new mongoose.Schema<IProduct>({
   isDeleted: { type: Boolean, default: false },
 });
 
-export const ProductModel = mongoose.model("Product", ProductSchema);
+export const ProductModel = mongoose.model("product", ProductSchema);

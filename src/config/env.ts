@@ -8,8 +8,7 @@ interface Ienv {
   DB_URI: string;
   PORT: number | string;
   APP_NAME: string;
-  STRIPE_SECRET_KEY: string;
-  STRIPE_ENDPOINT_SECRET_KEY: string;
+  PAYSTACK_SECRET_KEY: string;
   CLOUDINARY_CONFIG: {
     cloud_name: string;
     api_key: string;
@@ -44,8 +43,8 @@ const development: Ienv = {
   DB_URI: process.env.DB_URI || "",
   PORT: process.env.PORT || 5000,
   APP_NAME: process.env.APP_NAME || "MyApp",
-  STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY || "",
-  STRIPE_ENDPOINT_SECRET_KEY: process.env.STRIPE_ENDPOINT_SECRET_KEY || "",
+  PAYSTACK_SECRET_KEY: process.env.PAYSTACK_SECRET_KEY || "",
+
   CLOUDINARY_CONFIG: {
     cloud_name: process.env.CLOUDINARY_CONFIG_CLOUD_NAME || "",
     api_key: process.env.CLOUDINARY_CONFIG_API_KEY || "",

@@ -1083,3 +1083,253 @@ Resource not found
 [i_see_memories] error:
 Resource not found
 
+2024-11-24 13:23:55
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 13:33:54
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 13:34:16
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 13:35:24
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 13:40:54
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 13:50:08
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 13:52:58
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:01:23
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:06:42
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:06:53
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 14:07:03
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:14:38
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:16:28
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:18:12
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:19:37
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:19:49
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 14:19:56
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 14:20:48
+[i_see_memories] error:
+Cast to ObjectId failed for value "shipping" (type string) at path "_id" for model "Order"
+
+2024-11-24 19:13:29
+[i_see_memories] error:
+this must be a `object` type, but the final value was: `[
+  {
+    "productId": "\"67428f9c07ce31fd266ba270\"",
+    "quantity": "1",
+    "frontCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\"",
+    "fullCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\""
+  }
+]`.
+
+2024-11-24 19:15:43
+[i_see_memories] error:
+this must be a `object` type, but the final value was: `[
+  {
+    "productId": "\"67428f9c07ce31fd266ba270\"",
+    "quantity": "1",
+    "frontCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\"",
+    "fullCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\""
+  }
+]`.
+
+2024-11-24 19:16:10
+[i_see_memories] error:
+this must be a `object` type, but the final value was: `[
+  {
+    "productId": "\"67428f9c07ce31fd266ba270\"",
+    "quantity": "1",
+    "frontCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\"",
+    "fullCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\""
+  }
+]`.
+
+2024-11-24 19:25:59
+[i_see_memories] error:
+this must be a `object` type, but the final value was: `[
+  {
+    "productId": "\"67428f9c07ce31fd266ba270\"",
+    "quantity": "1",
+    "frontCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\"",
+    "fullCoverUrl": "\"https://res.cloudinary.com/ism-cloud/image/upload/v1732415346/i-see-memories/images/cart_item_ok0ypo.png\""
+  }
+]`.
+
+2024-11-24 19:34:55
+[i_see_memories] error:
+Product ID is required
+
+2024-11-24 19:49:09
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:49:25
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:49:26
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:49:29
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:49:33
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:50:01
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:50:02
+[i_see_memories] error:
+Cannot populate path `productId` because it is not in your schema. Set the `strictPopulate` option to false to override.
+
+2024-11-24 19:52:52
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 19:53:02
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 19:53:04
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 19:53:06
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 19:53:11
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 19:58:07
+[i_see_memories] error:
+Schema hasn't been registered for model "product".
+Use mongoose.model(name, schema)
+
+2024-11-24 20:01:45
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 20:02:13
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 20:27:03
+[i_see_memories] error:
+[0].productId must be a `string` type, but the final value was: `{
+  "_id": "\"67428f9c07ce31fd266ba270\"",
+  "pageCount": "\"52\"",
+  "price": "80000",
+  "isDeleted": "false",
+  "__v": "0"
+}`.
+
+2024-11-24 20:30:29
+[i_see_memories] error:
+[0].productId must be a `string` type, but the final value was: `{
+  "_id": "\"67428f9c07ce31fd266ba270\"",
+  "pageCount": "\"52\"",
+  "price": "80000",
+  "isDeleted": "false",
+  "__v": "0"
+}`.
+
+2024-11-24 20:30:31
+[i_see_memories] error:
+[0].productId must be a `string` type, but the final value was: `{
+  "_id": "\"67428f9c07ce31fd266ba270\"",
+  "pageCount": "\"52\"",
+  "price": "80000",
+  "isDeleted": "false",
+  "__v": "0"
+}`.
+
+2024-11-24 20:32:57
+[i_see_memories] error:
+[0].productId must be a `string` type, but the final value was: `{
+  "_id": "\"67428f9c07ce31fd266ba270\"",
+  "pageCount": "\"52\"",
+  "price": "80000",
+  "isDeleted": "false",
+  "__v": "0"
+}`.
+
+2024-11-24 20:45:20
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 20:46:11
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 20:55:29
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 21:03:13
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 21:21:20
+[i_see_memories] error:
+Resource not found
+
+2024-11-24 22:16:58
+[i_see_memories] error:
+Resource not found
+

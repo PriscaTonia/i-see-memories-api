@@ -1,14 +1,35 @@
 import { Schema } from "mongoose";
+// import { IProduct } from "../product/product.types";
 
-export interface IOrderBase {
+interface IOrderItemBase {
   frontCoverUrl: string;
   fullCoverUrl: string;
   quantity: number;
-  price: number;
+}
+
+interface IOrderItem {
+  frontCoverUrl: string;
+  fullCoverUrl: string;
+  quantity: number;
+  productId: Schema.Types.ObjectId;
+}
+
+export interface IOrderReqItem {
+  frontCoverUrl: string;
+  fullCoverUrl: string;
+  quantity: number;
+  productId: string;
+}
+
+export interface IOrderBase {
+  items: IOrderItemBase[]; // Corrected to an array
+
   status: OrderStatusEnum;
+  paymentStatus: PaymentStatusEnum;
   shippingDetails: {
     name: string;
     country: string;
+    phoneNum: string;
     state: string;
     street: string;
     city: string;
@@ -17,12 +38,11 @@ export interface IOrderBase {
 }
 
 export interface IOrderReq extends IOrderBase {
-  productId: string;
+  items: IOrderReqItem[]; // Corrected to an array
 }
 
-// Use Omit but enforce required fields
 export interface IOrder extends IOrderBase {
-  productId: Schema.Types.ObjectId;
+  items: IOrderItem[]; // Corrected to an array
   userId: Schema.Types.ObjectId;
 }
 
@@ -31,4 +51,10 @@ export enum OrderStatusEnum {
   Paid = "Paid",
   Processing = "Processing",
   Delivered = "Delivered",
+}
+
+export enum PaymentStatusEnum {
+  Pending = "Pending",
+  Successful = "Successful",
+  Failed = "Failed",
 }

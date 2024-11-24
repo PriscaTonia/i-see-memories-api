@@ -1,17 +1,8 @@
 import express, { Router } from "express";
 import { isAdminAuthenticated, isAuthenticated } from "../../middlewares/index";
-import {
-  createAnOrder,
-  getAllOrders,
-  getAnOrder,
-  updateOrder,
-} from "./orders.controller";
+import { getAllOrders, getAnOrder, updateOrder } from "./orders.controller";
 import validator from "../../middlewares/validator";
-import {
-  addOrderValidationSchema,
-  updateOrderShippingValidationSchema,
-  updateOrderValidationSchema,
-} from "./orders.validators";
+import { updateOrderValidationSchema } from "./orders.validators";
 
 const orderRouter = Router();
 
@@ -20,22 +11,6 @@ orderRouter.get("/orders", isAdminAuthenticated, getAllOrders);
 
 // get order by id
 orderRouter.get("/orders/:id", isAdminAuthenticated, getAnOrder);
-
-//create an order
-orderRouter.post(
-  "/orders",
-  isAuthenticated,
-  validator(addOrderValidationSchema),
-  createAnOrder
-);
-
-// update an order for shipping details
-orderRouter.patch(
-  "/orders/shipping",
-  isAuthenticated,
-  validator(updateOrderShippingValidationSchema),
-  updateOrder
-);
 
 // update an order
 orderRouter.patch(

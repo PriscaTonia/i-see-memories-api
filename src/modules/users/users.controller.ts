@@ -5,10 +5,24 @@ import { omit } from "lodash";
 import usersService from "./users.service";
 import { IUser } from "./users.types";
 import ordersService from "../orders/orders.service";
-import productService from "../product/product.service";
-import mongoose from "mongoose";
+import axios from "axios";
+import env from "../../config/env";
+import { IProduct } from "../product/product.types";
+import { ProductModel } from "../product/product.model";
 
 // CART
+
+export const addItemsToCart = async (
+  req: Request & { user: IUser } & { product: IProduct },
+  res: Response
+) => {
+  const items = req.body;
+  const userId = req.user._id;
+
+  const newOrder = await ordersService.addItemsToCart(userId, items);
+
+  res.send(response("Item added to Cart", newOrder));
+};
 
 // get a user's cart controller
 export const getAUserCart = async (
@@ -21,58 +35,26 @@ export const getAUserCart = async (
   res.send(response("Cart List", cart));
 };
 
-// update a user's cart for quantity controller
-export const updateAUserCartItem = async (
-  req: express.Request & { user: IUser },
+// update a user's order for shipping controller
+export const updateShipping = async (
+  req: express.Request,
   res: express.Response
 ) => {
-  const { id } = req.params;
-  const { quantity } = req.body;
-  const order = await ordersService.getOrdersById(id);
-  const product = await productService.getAProductById(
-    order.productId.toString()
-  );
-
-  let modifiedBody = {
-    quantity: quantity,
-    price: product.price * quantity,
-  };
-
-  const cart = await ordersService.updateOrderById(id, modifiedBody);
-
-  res.send(response("Cart Item Updated", cart));
-};
-
-// update a user's cart for shipping controller
-export const updateCartShipping = async (req: Request, res: Response) => {
-  const { id } = req.params;
+  const id = req.params.id;
   const updateBody = req.body;
 
-  updateBody.ids = updateBody.ids.map(
-    (x: string) => new mongoose.Types.ObjectId(x)
-  );
-
-  const updatedOrder = await ordersService.updateShippingDetailsForOrders(
-    updateBody.ids,
-    updateBody.shippingDetails
+  const updatedOrder = await ordersService.updateOrderShippingById(
+    id,
+    updateBody
   );
 
   if (!updatedOrder) {
-    return res.status(404).send(response("Order not found", null, false));
+    return res
+      .status(404)
+      .send(response("Cart Item Shipping not found", null, false));
   }
 
-  res.send(response("Cart updated successfully", updatedOrder));
-};
-
-// delete a cart item
-export const deleteACartItem = async (
-  req: express.Request & { user: IUser },
-  res: express.Response
-) => {
-  const { id } = req.params;
-  const cartItem = await ordersService.deleteOrderById(id);
-
-  res.send(response("Cart Item Deleted", cartItem));
+  res.send(response("Cart Item Shipping updated successfully", updatedOrder));
 };
 
 // ORDERS
@@ -135,4 +117,60 @@ export const updateUser = async (
   const filteredUser = omit(updatedUser._doc, ["password", "__v"]);
 
   res.send(response("User updated successfully", filteredUser));
+};
+
+export const createPayment = async (
+  req: Request & { user: IUser },
+  res: Response
+) => {
+  try {
+    const id = req.user._id;
+    const cart = await ordersService.getCartByUserId(id); // Fetch the cart
+
+    // Calculate the total amount
+    const totalAmount = cart.items.reduce((sum, item) => {
+      // @ts-ignore
+      const itemPrice = item.productId?.price || 0;
+      const quantity = item.quantity || 0;
+      return sum + itemPrice * quantity;
+    }, 0);
+
+    const email = req.user.email;
+
+    // Convert amount to kobo for Paystack (assuming NGN)
+    const amountInKobo = totalAmount * 100;
+
+    // Paystack API endpoint and secret key
+    const PAYSTACK_SECRET_KEY = env.PAYSTACK_SECRET_KEY;
+    const PAYSTACK_BASE_URL = "https://api.paystack.co";
+
+    // Make the API call to Paystack
+    const paystackResponse = await axios.post(
+      `${PAYSTACK_BASE_URL}/transaction/initialize`,
+      { email, amount: amountInKobo }, // Amount in kobo for Paystack
+      {
+        headers: {
+          Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    // Extract the data returned by Paystack
+    const { data } = paystackResponse;
+
+    if (data && data.status) {
+      res.send(response("Payment initiated successfully", data.data));
+    } else {
+      throw new Error(data.message || "Failed to initiate payment");
+    }
+  } catch (error: any) {
+    console.error("Error initiating payment:", error.message);
+
+    return res.status(500).send({
+      success: false,
+      message: "An error occurred while initiating payment",
+      error: error.response?.data || error.message,
+    });
+  }
 };

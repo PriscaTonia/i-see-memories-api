@@ -5,14 +5,14 @@ import {
   getAUserOrders,
   updateUser,
   getAUserCart,
-  updateAUserCartItem,
-  deleteACartItem,
-  updateCartShipping,
+  createPayment,
+  addItemsToCart,
+  updateShipping,
 } from "./users.controller";
 import validator from "../../middlewares/validator";
 import { updateUserValidationSchema } from "./users.validators";
 import {
-  updateOrderQuantityValidationSchema,
+  addToCartValidationSchema,
   updateOrderShippingValidationSchema,
 } from "../orders/orders.validators";
 
@@ -35,23 +35,22 @@ router.get("/users/orders", isAuthenticated, getAUserOrders);
 // get a user's cart list controller
 router.get("/users/cart", isAuthenticated, getAUserCart);
 
-// delete a cart item
-router.delete("/users/cart/:id", isAuthenticated, deleteACartItem);
-
-// update quantity cart
-router.patch(
-  "/users/cart/:id",
-  isAuthenticated,
-  validator(updateOrderQuantityValidationSchema),
-  updateAUserCartItem
+// add to cart
+router.post(
+  "/users/cart",
+  [isAuthenticated, validator(addToCartValidationSchema)],
+  addItemsToCart
 );
 
-// update shipping for cart
+// update shipping for orders/cart
 router.patch(
-  "/users/cart/shipping",
+  "/users/order-shipping-details/:id",
   isAuthenticated,
   validator(updateOrderShippingValidationSchema),
-  updateCartShipping
+  updateShipping
 );
+
+// initiate payment with paystack
+router.post("/users/place-order", isAuthenticated, createPayment);
 
 export default router;
