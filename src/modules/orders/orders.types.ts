@@ -3,6 +3,8 @@ import { Schema } from "mongoose";
 export interface IOrderBase {
   frontCoverUrl: string;
   fullCoverUrl: string;
+  quantity: number;
+  price: number;
   status: OrderStatusEnum;
   shippingDetails: {
     name: string;
@@ -15,7 +17,7 @@ export interface IOrderBase {
 }
 
 export interface IOrderReq extends IOrderBase {
-  // productId: string;
+  productId: string;
 }
 
 // Use Omit but enforce required fields

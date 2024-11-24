@@ -10,7 +10,9 @@ const UserSchema = new mongoose.Schema<IUser>({
   isDeleted: { type: Boolean, default: false },
   name: { type: String },
   country: { type: String },
+  phoneNum: { type: String },
   state: { type: String },
+  street: { type: String },
   zipcode: { type: String },
   city: { type: String },
 });

@@ -14,4 +14,5 @@ export interface IUser extends IUserReq {
   street?: string;
   city?: string;
   zipcode?: string;
+  phoneNum?: string;
 }

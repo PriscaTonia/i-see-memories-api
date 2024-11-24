@@ -9,6 +9,7 @@ import {
 import validator from "../../middlewares/validator";
 import {
   addOrderValidationSchema,
+  updateOrderShippingValidationSchema,
   updateOrderValidationSchema,
 } from "./orders.validators";
 
@@ -26,6 +27,14 @@ orderRouter.post(
   isAuthenticated,
   validator(addOrderValidationSchema),
   createAnOrder
+);
+
+// update an order for shipping details
+orderRouter.patch(
+  "/orders/shipping",
+  isAuthenticated,
+  validator(updateOrderShippingValidationSchema),
+  updateOrder
 );
 
 // update an order

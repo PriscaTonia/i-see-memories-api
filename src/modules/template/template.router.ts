@@ -12,7 +12,7 @@ import {
 const templateRouter = Router();
 
 // get all templates
-templateRouter.get("/templates", isAdminAuthenticated, getAllTemplates);
+templateRouter.get("/templates", getAllTemplates);
 
 // create a template
 templateRouter.post(

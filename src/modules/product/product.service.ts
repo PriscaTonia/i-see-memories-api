@@ -5,6 +5,9 @@ class ProductService {
   async getProducts() {
     return await ProductModel.find({ isDeleted: false });
   }
+  async getAProductById(id: string) {
+    return await ProductModel.findById(id);
+  }
   async createProductByAdminId(createdProductDto: IProductReq) {
     return await ProductModel.create(createdProductDto);
   }

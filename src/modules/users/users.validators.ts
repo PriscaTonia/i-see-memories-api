@@ -6,5 +6,6 @@ export const updateUserValidationSchema = Yup.object({
   state: Yup.string(),
   street: Yup.string(),
   city: Yup.string(),
+  phoneNum: Yup.string(),
   zipcode: Yup.string().matches(/^\d+$/, "Zipcode must be numeric"),
 });

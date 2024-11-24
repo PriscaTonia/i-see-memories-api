@@ -8,26 +8,47 @@ export const addOrderValidationSchema = Yup.object({
   fullCoverUrl: Yup.string()
     .url("Full cover must be a valid URL")
     .required("Full cover URL is required"),
-  status: Yup.mixed<OrderStatusEnum>()
-    .oneOf(
-      Object.values(OrderStatusEnum),
-      `Status must be one of: ${Object.values(OrderStatusEnum).join(", ")}`
-    )
-    .required("Order status is required"),
+  quantity: Yup.number().required("Quantity is required"),
+  price: Yup.number(),
+  status: Yup.mixed<OrderStatusEnum>().oneOf(
+    Object.values(OrderStatusEnum),
+    `Status must be one of: ${Object.values(OrderStatusEnum).join(", ")}`
+  ),
   shippingDetails: Yup.object({
-    name: Yup.string().required("Name is required"),
-    country: Yup.string().required("Country is required"),
-    state: Yup.string().required("State is required"),
-    street: Yup.string().required("Street is required"),
-    city: Yup.string().required("City is required"),
-    zipcode: Yup.string()
-      .matches(/^\d+$/, "Zipcode must be numeric")
-      .required("Zipcode is required"),
-  }).required("Shipping details are required"),
+    name: Yup.string(),
+    country: Yup.string(),
+    state: Yup.string(),
+    street: Yup.string(),
+    city: Yup.string(),
+    zipcode: Yup.string().matches(/^\d+$/, "Zipcode must be numeric"),
+  }),
   userId: Yup.string().matches(
     /^[a-f\d]{24}$/i,
     "User ID must be a valid MongoDB ObjectId"
   ),
+  productId: Yup.string()
+    .matches(/^[a-f\d]{24}$/i, "Product ID must be a valid MongoDB ObjectId")
+    .required("Product ID is required"),
+});
+
+export const updateOrderQuantityValidationSchema = Yup.object({
+  quantity: Yup.number(),
+});
+
+export const updateOrderShippingValidationSchema = Yup.object({
+  orderIds: Yup.array(
+    Yup.string()
+      .matches(/^[a-f\d]{24}$/i, "Invalid product id")
+      .required("Product ID is required")
+  ),
+  shippingDetails: Yup.object({
+    name: Yup.string(),
+    country: Yup.string(),
+    state: Yup.string(),
+    street: Yup.string(),
+    city: Yup.string(),
+    zipcode: Yup.string().matches(/^\d+$/, "Zipcode must be numeric"),
+  }),
 });
 
 export const updateOrderValidationSchema = Yup.object({
@@ -44,6 +65,10 @@ export const updateOrderValidationSchema = Yup.object({
     zipcode: Yup.string().matches(/^\d+$/, "Zipcode must be numeric"),
   }),
   userId: Yup.string().matches(
+    /^[a-f\d]{24}$/i,
+    "User ID must be a valid MongoDB ObjectId"
+  ),
+  productId: Yup.string().matches(
     /^[a-f\d]{24}$/i,
     "User ID must be a valid MongoDB ObjectId"
   ),

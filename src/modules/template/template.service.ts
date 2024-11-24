@@ -5,6 +5,9 @@ class TemplateService {
   async getTemplates() {
     return await TemplateModel.find({ isDeleted: false });
   }
+  async getATemplate(id: string) {
+    return await TemplateModel.findById(id);
+  }
   async createTemplateByAdminId(createdTemplateDto: ITemplateReq) {
     return await TemplateModel.create(createdTemplateDto);
   }

@@ -12,7 +12,7 @@ import {
 const productRouter = Router();
 
 // get all products
-productRouter.get("/products", isAdminAuthenticated, getAllProducts);
+productRouter.get("/products", getAllProducts);
 
 // create a product
 productRouter.post(
