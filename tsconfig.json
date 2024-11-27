@@ -8,7 +8,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     // "baseUrl": "./",z
     "paths": {
       // "*": ["node_modules/*", "src/types/*"], // Adjust as needed
@@ -29,6 +29,6 @@
     // "experimentalDecorators": true, // If using decorators
     // "emitDecoratorMetadata": true // If using decorators
   },
-  // "include": ["src/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "**/*.spec.ts"]
 }
