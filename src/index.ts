@@ -22,6 +22,7 @@ app.use(
 );
 
 app.use(compression());
+app.use("/ping", (req, res) => res.send(`Live`));
 app.use("/api/v1", router);
 
 // Database connection

@@ -45,7 +45,7 @@ class PictureController {
 
     const { file, body } = req;
 
-    console.log({ file, body });
+    // console.log({ file, body });
 
     const fileType = getMediaType(file.mimetype);
     const uploader = uploadFncs[fileType];
@@ -60,8 +60,8 @@ class PictureController {
       type: upload.format,
       url: upload.secure_url,
       // duration: upload?.duration || null,
-      pageNo: body.pageNo,
-      order: body.orderId,
+      pageNo: body?.pageNo,
+      order: body?.orderId,
     });
 
     await fs.unlink(file.path);

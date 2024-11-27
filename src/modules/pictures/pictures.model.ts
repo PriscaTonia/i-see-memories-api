@@ -13,7 +13,7 @@ const pictureSchema = new Schema<IPicture>(
     order: {
       type: Schema.Types.ObjectId,
       ref: "order",
-      required: true,
+      // required: true,
     },
   },
   {
