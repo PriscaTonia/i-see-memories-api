@@ -11,7 +11,10 @@ class OrderService {
   }
 
   async getOrdersById(_id: string) {
-    return await OrderModel.findOne({ _id });
+    return await OrderModel.findOne({ _id }).populate({
+      path: "items.productId", // Populates the `productId` field
+      select: "price pageCount isDeleted", // Select specific fields
+    });
   }
 
   async deleteOrderById(id: string) {

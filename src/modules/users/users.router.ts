@@ -8,6 +8,7 @@ import {
   createPayment,
   addItemsToCart,
   updateShipping,
+  getASingleOrder,
 } from "./users.controller";
 import validator from "../../middlewares/validator";
 import { updateUserValidationSchema } from "./users.validators";
@@ -31,6 +32,9 @@ router.get("/users/profile/:id", isAuthenticated, getUser);
 
 // get a user's order list controller
 router.get("/users/orders", isAuthenticated, getAUserOrders);
+
+// get a user's order controller
+router.get("/users/orders/:id", isAuthenticated, getASingleOrder);
 
 // get a user's cart list controller
 router.get("/users/cart", isAuthenticated, getAUserCart);

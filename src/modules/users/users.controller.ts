@@ -70,6 +70,17 @@ export const getAUserOrders = async (
   res.send(response("Orders List", orders));
 };
 
+// get a single order
+export const getASingleOrder = async (
+  req: express.Request,
+  res: express.Response
+) => {
+  const { id } = req.params;
+  const order = await ordersService.getOrdersById(id);
+
+  res.send(response("Single Order Info", order));
+};
+
 // USER
 
 // get user controller
@@ -119,6 +130,7 @@ export const updateUser = async (
   res.send(response("User updated successfully", filteredUser));
 };
 
+// PAYMENT
 export const createPayment = async (
   req: Request & { user: IUser },
   res: Response
