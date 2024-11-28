@@ -29,6 +29,6 @@
     // "experimentalDecorators": true, // If using decorators
     // "emitDecoratorMetadata": true // If using decorators
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "./api/*.ts"],
   "exclude": ["node_modules", "dist", "*/.spec.ts"]
 }

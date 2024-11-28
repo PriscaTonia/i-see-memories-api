@@ -2,13 +2,13 @@
   "name": "i-see-memories-api",
   "version": "1.0.0",
   "description": "",
-  "main": "api/index.js",
+  "main": "api/index.ts",
   "scripts": {
     "start": "ts-node api/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --exec ts-node api/index.ts",
     "build": "tsc",
-    "vercel-build": "tsc"
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",
