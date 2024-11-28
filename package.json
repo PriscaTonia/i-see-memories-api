@@ -6,7 +6,9 @@
   "scripts": {
     "start": "ts-node api/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec ts-node src/index.ts"
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "tsc",
+    "vercel-build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -28,6 +30,7 @@
     "dotenv": "^16.0.3"
   },
   "dependencies": {
+    "@vercel/node": "^3.2.27",
     "axios": "^1.7.7",
     "bcrypt": "^5.0.1",
     "cloudinary": "^1.27.1",
