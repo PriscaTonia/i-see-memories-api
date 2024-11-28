@@ -1,13 +1,13 @@
 import "express-async-errors";
-import env from "./config/env";
+import env from "../src/config/env";
 import express, { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import compression from "compression";
 import cors from "cors";
-import router from "./router";
-import errorMiddleware from "./middlewares/error";
-import { NotFoundError } from "./config/errors";
-import openDBConnection from "./config/db";
+import router from "../src/router";
+import errorMiddleware from "../src/middlewares/error";
+import { NotFoundError } from "../src/config/errors";
+import openDBConnection from "../src/config/db";
 
 const app = express();
 const PORT = env.PORT;
