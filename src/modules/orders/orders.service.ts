@@ -4,7 +4,10 @@ import { Schema } from "mongoose";
 
 class OrderService {
   async getOrders() {
-    return await OrderModel.find({ status: OrderStatusEnum.Paid });
+    return await OrderModel.find({ status: OrderStatusEnum.Paid }).populate({
+      path: "items.productId", // Populates the `productId` field
+      select: "price pageCount isDeleted", // Select specific fields
+    });
   }
 
   async getOrdersById(_id: string) {
@@ -27,7 +30,13 @@ class OrderService {
   }
 
   async getOrdersByUserId(userId: Schema.Types.ObjectId) {
-    return await OrderModel.find({ userId, status: OrderStatusEnum.Paid });
+    return await OrderModel.find({
+      userId,
+      status: OrderStatusEnum.Paid,
+    }).populate({
+      path: "items.productId", // Populates the `productId` field
+      select: "price pageCount isDeleted", // Select specific fields
+    });
   }
 
   // get cart items
