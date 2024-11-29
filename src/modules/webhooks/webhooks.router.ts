@@ -10,7 +10,11 @@ webhooksRouter.post("/webhooks/paystack", (req: Request, res: Response) => {
 
   if (payload.event !== "charge.success") return res.send(response("nah"));
 
-  console.log({ paystack: payload });
+  console.log({
+    event: payload.event,
+    paystack: payload.data,
+    metadata: payload.data.metadata,
+  });
 
   res.send(response("transaction complete"));
 });

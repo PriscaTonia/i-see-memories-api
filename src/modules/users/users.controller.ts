@@ -159,7 +159,12 @@ export const createPayment = async (
     // Make the API call to Paystack
     const paystackResponse = await axios.post(
       `${PAYSTACK_BASE_URL}/transaction/initialize`,
-      { email, amount: amountInKobo, metadata: { orderId: cart?._id } }, // Amount in kobo for Paystack
+      {
+        email,
+        amount: amountInKobo,
+        metadata: { orderId: cart?._id },
+        order_id: cart?._id,
+      }, // Amount in kobo for Paystack
       {
         headers: {
           Authorization: `Bearer ${PAYSTACK_SECRET_KEY}`,
