@@ -44,6 +44,7 @@ export interface IOrderReq extends IOrderBase {
 export interface IOrder extends IOrderBase {
   items: IOrderItem[]; // Corrected to an array
   userId: Schema.Types.ObjectId;
+  paidOn: Date;
 }
 
 export enum OrderStatusEnum {

@@ -4,7 +4,9 @@ import { Schema } from "mongoose";
 
 class OrderService {
   async getOrders() {
-    return await OrderModel.find({ status: OrderStatusEnum.Paid }).populate({
+    return await OrderModel.find({
+      status: { $ne: OrderStatusEnum.Cart },
+    }).populate({
       path: "items.productId", // Populates the `productId` field
       select: "price pageCount isDeleted", // Select specific fields
     });
@@ -35,7 +37,7 @@ class OrderService {
   async getOrdersByUserId(userId: Schema.Types.ObjectId) {
     return await OrderModel.find({
       userId,
-      status: OrderStatusEnum.Paid,
+      status: { $ne: OrderStatusEnum.Cart },
     }).populate({
       path: "items.productId", // Populates the `productId` field
       select: "price pageCount isDeleted", // Select specific fields

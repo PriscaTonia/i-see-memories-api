@@ -9,6 +9,7 @@ import axios from "axios";
 import env from "../../config/env";
 import { IProduct } from "../product/product.types";
 import { ProductModel } from "../product/product.model";
+import { PaymentStatusEnum } from "../orders/orders.types";
 
 // CART
 
@@ -137,7 +138,12 @@ export const createPayment = async (
 ) => {
   try {
     const id = req.user._id;
-    const cart = await ordersService.getCartByUserId(id); // Fetch the cart
+    const cart = await ordersService.getCartByUserId(id);
+
+    // update order
+    await ordersService.updateOrderById(cart?._id.toString(), {
+      paymentStatus: PaymentStatusEnum.Pending,
+    });
 
     // Calculate the total amount
     const totalAmount = cart.items.reduce((sum, item) => {

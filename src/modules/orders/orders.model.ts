@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IOrder, OrderStatusEnum } from "./orders.types";
+import { IOrder, OrderStatusEnum, PaymentStatusEnum } from "./orders.types";
 
 const OrderSchema = new mongoose.Schema<IOrder>(
   {
@@ -27,9 +27,10 @@ const OrderSchema = new mongoose.Schema<IOrder>(
     },
     paymentStatus: {
       type: String,
-      enum: Object.values(OrderStatusEnum),
+      enum: Object.values(PaymentStatusEnum),
       default: null,
     },
+    paidOn: { type: Date, default: null },
     shippingDetails: {
       name: { type: String, default: "" },
       country: { type: String, default: "" },
