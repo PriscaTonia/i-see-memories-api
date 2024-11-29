@@ -18,7 +18,7 @@ webhooksRouter.post(
     if (data.requested_amount !== data.amount) return res.send(response("nah"));
 
     const orderId = payload.data.metadata.orderId;
-    const order = ordersService.getOrdersById(orderId);
+    const order = await ordersService.getOrdersById(orderId);
 
     // update order
     await ordersService.updateOrderById(orderId, {
