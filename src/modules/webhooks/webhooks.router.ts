@@ -7,6 +7,9 @@ const webhooksRouter = Router();
 // create a product
 webhooksRouter.post("/webhooks/paystack", (req: Request, res: Response) => {
   const payload = getPaystackWebhook(req);
+
+  if (payload.event !== "charge.success") return res.send(response("nah"));
+
   console.log({ paystack: payload });
 
   res.send(response("transaction complete"));
