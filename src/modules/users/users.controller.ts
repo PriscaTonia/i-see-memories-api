@@ -163,7 +163,6 @@ export const createPayment = async (
         email,
         amount: amountInKobo,
         metadata: { orderId: cart?._id },
-        order_id: cart?._id,
       }, // Amount in kobo for Paystack
       {
         headers: {
