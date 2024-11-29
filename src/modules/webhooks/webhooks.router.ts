@@ -5,14 +5,11 @@ import response from "../../utils/response";
 const webhooksRouter = Router();
 
 // create a product
-webhooksRouter.post(
-  "/webhooks/paystack",
-  getPaystackWebhook,
-  (req: Request & { paystack: any }, res: Response) => {
-    console.log({ paystack: req.paystack });
+webhooksRouter.post("/webhooks/paystack", (req: Request, res: Response) => {
+  const payload = getPaystackWebhook(req);
+  console.log({ paystack: payload });
 
-    res.send(response("transaction complete"));
-  }
-);
+  res.send(response("transaction complete"));
+});
 
 export default webhooksRouter;

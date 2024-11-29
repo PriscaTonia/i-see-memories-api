@@ -3,7 +3,7 @@ import crypto from "crypto";
 
 import { Request } from "express";
 
-export const getPaystackWebhook = (req: Request & { paystack: any }) => {
+export const getPaystackWebhook = (req: Request) => {
   const { headers, body } = req;
 
   const hash = crypto
@@ -13,5 +13,5 @@ export const getPaystackWebhook = (req: Request & { paystack: any }) => {
 
   if (hash !== headers["x-paystack-signature"]) return false;
 
-  req.paystack = body;
+  return body;
 };
