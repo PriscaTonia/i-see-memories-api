@@ -15,7 +15,7 @@ interface ILogParams {
 const logFormat = printf(
   // @ts-ignore
   ({ level, message, label, timestamp, stack }: ILogParams) => {
-    console.log(message);
+    // console.log(message);
     if (typeof message !== "string") {
       message = message?.error || message;
     }
