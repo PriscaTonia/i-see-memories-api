@@ -85,9 +85,13 @@ export const getASingleOrder = async (
 // USER
 
 // get user controller
-export const getUser = async (req: express.Request, res: express.Response) => {
-  const { id } = req.params;
-  const user = await userService.getUsersById(id);
+export const getUser = async (
+  req: express.Request & { user: IUser },
+  res: express.Response
+) => {
+  // const { id } = req.params;
+  const id = req.user._id;
+  const user = await userService.getUsersById(id.toString());
 
   // @ts-ignore
   const filteredUser = omit(user._doc, ["password", "__v"]);

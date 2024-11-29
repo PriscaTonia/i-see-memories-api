@@ -28,7 +28,7 @@ router.patch(
 );
 
 // get a user's information controller
-router.get("/users/profile/:id", isAuthenticated, getUser);
+router.get("/users/profile", isAuthenticated, getUser);
 
 // get a user's order list controller
 router.get("/users/orders", isAuthenticated, getAUserOrders);

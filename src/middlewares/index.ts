@@ -27,6 +27,7 @@ export const isAuthenticated = async function (
     req.user = user._doc;
     next();
   } catch (error) {
+    // console.log(error?.name);
     const errors = ["TokenExpiredError", "NotBeforeError", "JsonWebTokenError"];
     if (errors.includes(error?.name)) {
       throw new UnAuthorizedError();
