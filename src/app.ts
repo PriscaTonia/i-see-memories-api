@@ -16,7 +16,18 @@ const mode = env.NODE_ENV;
 app.use(express.json());
 app.use(
   cors({
+    origin: ["http://localhost:3000", "https://i-see-memories.vercel.app"],
     credentials: true,
+    allowedHeaders: [
+      "ism-auth-token",
+      "ism-admin-token",
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "Authorization",
+    ],
+    methods: ["GET", "PUT", "POST", "PATCH", "DELETE", "OPTIONS"],
   })
 );
 
