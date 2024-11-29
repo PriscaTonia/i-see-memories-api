@@ -15,6 +15,10 @@ const pictureSchema = new Schema<IPicture>(
       ref: "order",
       // required: true,
     },
+    itemId: {
+      type: String,
+      // ref::"",
+    },
   },
   {
     timestamps: true,

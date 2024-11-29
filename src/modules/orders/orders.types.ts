@@ -7,7 +7,7 @@ interface IOrderItemBase {
   quantity: number;
 }
 
-interface IOrderItem {
+export interface IOrderItem {
   frontCoverUrl: string;
   fullCoverUrl: string;
   quantity: number;

@@ -62,6 +62,7 @@ class PictureController {
       // duration: upload?.duration || null,
       pageNo: body?.pageNo,
       order: body?.orderId,
+      itemId: body?.itemId,
     });
 
     await fs.unlink(file.path);

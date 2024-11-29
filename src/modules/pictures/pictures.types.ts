@@ -7,7 +7,9 @@ export interface IPicture {
   type: string;
   public_id: string;
   filename: string;
+  pageNo?: number;
+  order?: Schema.Types.ObjectId;
+  itemId?: string;
+  // itemId?: Schema.Types.ObjectId;
   // duration?: any;
-  pageNo: number;
-  order: Schema.Types.ObjectId;
 }

@@ -3,6 +3,10 @@ import * as Yup from "yup";
 export const addPictureValSchema = Yup.object({
   file: Yup.string(),
   pageNo: Yup.number(),
+  itemId: Yup.string().matches(
+    /^[a-f\d]{24}$/i,
+    "Item ID must be a valid MongoDB ObjectId"
+  ),
   orderId: Yup.string().matches(
     /^[a-f\d]{24}$/i,
     "Order ID must be a valid MongoDB ObjectId"

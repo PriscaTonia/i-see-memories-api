@@ -25,7 +25,7 @@ class OrderService {
 
   async addItemsToCart(userId: Schema.Types.ObjectId, items: IOrderReqItem[]) {
     return OrderModel.findOneAndUpdate(
-      { userId, status: OrderStatusEnum.Cart }, // Query to find the order
+      { userId, status: OrderStatusEnum.Cart }, // Query to find the cart order
       {
         $set: { items }, // Replace or update the `items` field
         $setOnInsert: { userId, status: OrderStatusEnum.Cart }, // Add these fields only on insert

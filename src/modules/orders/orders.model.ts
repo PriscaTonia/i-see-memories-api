@@ -1,20 +1,25 @@
 import mongoose, { Schema } from "mongoose";
-import { IOrder, OrderStatusEnum, PaymentStatusEnum } from "./orders.types";
+import {
+  IOrder,
+  IOrderItem,
+  OrderStatusEnum,
+  PaymentStatusEnum,
+} from "./orders.types";
+
+const ItemSchema = new mongoose.Schema<IOrderItem>({
+  productId: {
+    type: Schema.Types.ObjectId,
+    ref: "product",
+    required: true,
+  },
+  frontCoverUrl: { type: String },
+  fullCoverUrl: { type: String },
+  quantity: { type: Number },
+});
 
 const OrderSchema = new mongoose.Schema<IOrder>(
   {
-    items: [
-      {
-        productId: {
-          type: Schema.Types.ObjectId,
-          ref: "product",
-          required: true,
-        },
-        frontCoverUrl: { type: String },
-        fullCoverUrl: { type: String },
-        quantity: { type: Number },
-      },
-    ],
+    items: [ItemSchema],
     userId: {
       type: Schema.Types.ObjectId,
       ref: "user",
