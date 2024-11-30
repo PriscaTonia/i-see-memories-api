@@ -36,6 +36,7 @@ const OrderSchema = new mongoose.Schema<IOrder>(
       default: null,
     },
     paidOn: { type: Date, default: null },
+    orderNo: { type: String, required: true },
     shippingDetails: {
       name: { type: String, default: "" },
       country: { type: String, default: "" },

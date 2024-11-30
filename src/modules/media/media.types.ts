@@ -1,6 +1,6 @@
-import { Schema, Types } from "mongoose";
+import { Schema } from "mongoose";
 
-export interface IPicture {
+export interface IMedia {
   _id?: string;
   url: string;
   size: number;

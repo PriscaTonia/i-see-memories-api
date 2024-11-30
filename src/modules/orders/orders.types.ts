@@ -8,10 +8,12 @@ interface IOrderItemBase {
 }
 
 export interface IOrderItem {
+  _id: Schema.Types.ObjectId;
   frontCoverUrl: string;
   fullCoverUrl: string;
   quantity: number;
   productId: Schema.Types.ObjectId;
+  pictures?: any;
 }
 
 export interface IOrderReqItem {
@@ -23,7 +25,7 @@ export interface IOrderReqItem {
 
 export interface IOrderBase {
   items: IOrderItemBase[]; // Corrected to an array
-
+  orderNo: string;
   status: OrderStatusEnum;
   paymentStatus: PaymentStatusEnum;
   shippingDetails: {

@@ -8,13 +8,13 @@ import {
 } from "../../lib/cloudinary";
 
 import response from "../../utils/response";
-import pictureService from "./pictures.service";
+import pictureService from "./media.service";
 import { getMediaType, uploadFncs } from "../../utils/helpers";
 import * as fs from "fs/promises";
-import { IPicture } from "./pictures.types";
 import { NotFoundError } from "../../config/errors";
+import { IMedia } from "./media.types";
 
-class PictureController {
+class MediaController {
   async create(req: Request, res: Response) {
     // for uploading a single file
 
@@ -52,7 +52,7 @@ class PictureController {
   async deleteByUrl(req: Request, res: Response) {
     const url = req.body.url;
     // console.log({ url });
-    const picture: IPicture = await pictureService.findByUrl(url);
+    const picture: IMedia = await pictureService.findByUrl(url);
     // console.log({picture });
     if (picture) await deleteFromCloud(picture.public_id);
     await pictureService.deleteByUrl(url);
@@ -60,4 +60,4 @@ class PictureController {
   }
 }
 
-export default new PictureController();
+export default new MediaController();

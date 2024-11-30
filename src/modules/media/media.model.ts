@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
-import { IPicture } from "./pictures.types";
+import { IMedia } from "./media.types";
 
-const pictureSchema = new Schema<IPicture>(
+const mediaSchema = new Schema<IMedia>(
   {
     url: { type: String, default: null },
     // duration: { type: Number, default: null },
@@ -24,6 +24,6 @@ const pictureSchema = new Schema<IPicture>(
   }
 );
 
-const Picture = model("picture", pictureSchema);
+const Media = model("media", mediaSchema);
 
-export default Picture;
+export default Media;

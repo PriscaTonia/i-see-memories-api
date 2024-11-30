@@ -7,6 +7,7 @@ import productRouter from "../modules/product/product.router";
 import templateRouter from "../modules/template/template.router";
 import pictureRouter from "../modules/pictures/pictures.router";
 import webhooksRouter from "../modules/webhooks/webhooks.router";
+import mediaRouter from "../modules/media/media.router";
 
 const router = express.Router();
 
@@ -17,6 +18,7 @@ router.use(adminRouter);
 router.use(productRouter);
 router.use(templateRouter);
 router.use(pictureRouter);
+router.use(mediaRouter);
 router.use(webhooksRouter);
 
 export default router;

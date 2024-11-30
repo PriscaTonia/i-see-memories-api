@@ -1,3 +1,4 @@
+import { generateOrderNo } from "../../utils/token";
 import { OrderModel } from "./orders.model";
 import { IOrder, IOrderReqItem, OrderStatusEnum } from "./orders.types";
 import { Schema } from "mongoose";
@@ -13,10 +14,12 @@ class OrderService {
   }
 
   async getOrdersById(_id: string) {
-    return await OrderModel.findOne({ _id }).populate({
-      path: "items.productId", // Populates the `productId` field
-      select: "price pageCount isDeleted", // Select specific fields
-    });
+    return OrderModel.findOne({ _id })
+      .populate({
+        path: "items.productId", // Populates the `productId` field
+        select: "price pageCount isDeleted", // Select specific fields
+      })
+      .lean();
   }
 
   async deleteOrderById(id: string) {
@@ -27,7 +30,7 @@ class OrderService {
     return OrderModel.findOneAndUpdate(
       { userId, status: OrderStatusEnum.Cart }, // Query to find the cart order
       {
-        $set: { items }, // Replace or update the `items` field
+        $set: { items, orderNo: generateOrderNo() }, // Replace or update the `items` field
         $setOnInsert: { userId, status: OrderStatusEnum.Cart }, // Add these fields only on insert
       },
       { upsert: true, returnDocument: "after" } // Ensure upsert and return updated doc
