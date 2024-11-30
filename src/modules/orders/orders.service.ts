@@ -51,7 +51,7 @@ class OrderService {
   async getCartByUserId(userId: Schema.Types.ObjectId) {
     return (
       await OrderModel.findOne({ userId, status: OrderStatusEnum.Cart })
-    ).populate({
+    )?.populate({
       path: "items.productId", // Populates the `productId` field
       select: "price pageCount isDeleted", // Select specific fields
     });
