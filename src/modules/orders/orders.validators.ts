@@ -10,12 +10,16 @@ export const addToCartValidationSchema = Yup.array(
       .url("Full cover must be a valid URL")
       .required("Full cover URL is required"),
     quantity: Yup.number().required("Quantity is required"),
+    title: Yup.string().required("Title is required"),
+    subTitle: Yup.string().required("Sub Title is required"),
+    color: Yup.string().required("Color is required"),
     productId: Yup.string()
       .matches(/^[a-f\d]{24}$/i, "Invalid Product ID ")
       .required("Product ID is required"),
   })
 );
 
+// for user
 export const updateOrderShippingValidationSchema = Yup.object({
   name: Yup.string(),
   country: Yup.string(),

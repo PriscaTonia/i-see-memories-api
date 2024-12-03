@@ -62,7 +62,7 @@ class OrderService {
     return OrderModel.findByIdAndUpdate(id, updateQuery, { new: true });
   }
 
-  // update shipping for an order
+  // update shipping for an order by the user
   async updateOrderShippingById(
     id: string,
     shippingDetails: { [key: string]: any }

@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { isAdminAuthenticated, isAuthenticated } from "../../middlewares/index";
+import { isAdminAuthenticated } from "../../middlewares/index";
 import { getAllOrders, getAnOrder, updateOrder } from "./orders.controller";
 import validator from "../../middlewares/validator";
 import { updateOrderValidationSchema } from "./orders.validators";

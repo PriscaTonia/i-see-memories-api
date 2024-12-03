@@ -14,6 +14,9 @@ const ItemSchema = new mongoose.Schema<IOrderItem>({
   },
   frontCoverUrl: { type: String },
   fullCoverUrl: { type: String },
+  title: { type: String },
+  subTitle: { type: String },
+  color: { type: String },
   quantity: { type: Number },
 });
 

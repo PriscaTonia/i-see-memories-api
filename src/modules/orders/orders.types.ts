@@ -5,6 +5,9 @@ interface IOrderItemBase {
   frontCoverUrl: string;
   fullCoverUrl: string;
   quantity: number;
+  title: string;
+  subTitle: string;
+  color: string;
 }
 
 export interface IOrderItem {
@@ -14,6 +17,9 @@ export interface IOrderItem {
   quantity: number;
   productId: Schema.Types.ObjectId;
   pictures?: any;
+  title: string;
+  subTitle: string;
+  color: string;
 }
 
 export interface IOrderReqItem {
@@ -21,6 +27,9 @@ export interface IOrderReqItem {
   fullCoverUrl: string;
   quantity: number;
   productId: string;
+  title: string;
+  subTitle: string;
+  color: string;
 }
 
 export interface IOrderBase {
@@ -40,11 +49,11 @@ export interface IOrderBase {
 }
 
 export interface IOrderReq extends IOrderBase {
-  items: IOrderReqItem[]; // Corrected to an array
+  items: IOrderReqItem[];
 }
 
 export interface IOrder extends IOrderBase {
-  items: IOrderItem[]; // Corrected to an array
+  items: IOrderItem[];
   userId: Schema.Types.ObjectId;
   paidOn: Date;
 }
