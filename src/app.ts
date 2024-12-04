@@ -7,6 +7,7 @@ import router from "../src/router";
 import errorMiddleware from "../src/middlewares/error";
 import { NotFoundError } from "../src/config/errors";
 import openDBConnection from "../src/config/db";
+import { runMigrations } from "./scripts/migrations";
 
 const app = express();
 const PORT = env.PORT;
@@ -49,5 +50,7 @@ app.use(errorMiddleware);
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT} in ${mode} mode`);
 });
+
+runMigrations();
 
 export default app;
