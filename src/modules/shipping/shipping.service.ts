@@ -1,10 +1,15 @@
 import { Schema } from "mongoose";
 import { ShippingModel } from "./shipping.model";
 import { IShipping } from "./shipping.types";
+import { ShippingTypeEnum } from "../orders/orders.types";
 
 class ShippingService {
   async getShippingPrices() {
     return await ShippingModel.find();
+  }
+
+  async getAShippingPrice(type: ShippingTypeEnum) {
+    return await ShippingModel.findOne({ type });
   }
 
   async createOrUpdateService(itemData: IShipping) {

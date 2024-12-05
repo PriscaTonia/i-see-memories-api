@@ -10,6 +10,7 @@ import env from "../../config/env";
 import { IProduct } from "../product/product.types";
 import { ProductModel } from "../product/product.model";
 import { PaymentStatusEnum } from "../orders/orders.types";
+import shippingService from "../shipping/shipping.service";
 
 // CART
 
@@ -144,6 +145,14 @@ export const createPayment = async (
     const id = req.user._id;
     const cart = await ordersService.getCartByUserId(id);
 
+    const shippingPrice = await shippingService.getAShippingPrice(
+      cart?.shippingType
+    );
+
+    const shippingAmountInKobo = shippingPrice.price * 100;
+
+    console.log({ shippingAmountInKobo });
+
     // update order
     await ordersService.updateOrderById(cart?._id.toString(), {
       paymentStatus: PaymentStatusEnum.Pending,
@@ -171,7 +180,7 @@ export const createPayment = async (
       `${PAYSTACK_BASE_URL}/transaction/initialize`,
       {
         email,
-        amount: amountInKobo,
+        amount: amountInKobo + shippingAmountInKobo,
         metadata: { orderId: cart?._id },
       }, // Amount in kobo for Paystack
       {

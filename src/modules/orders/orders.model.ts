@@ -4,6 +4,7 @@ import {
   IOrderItem,
   OrderStatusEnum,
   PaymentStatusEnum,
+  ShippingTypeEnum,
 } from "./orders.types";
 
 const ItemSchema = new mongoose.Schema<IOrderItem>({
@@ -36,6 +37,11 @@ const OrderSchema = new mongoose.Schema<IOrder>(
     paymentStatus: {
       type: String,
       enum: Object.values(PaymentStatusEnum),
+      default: null,
+    },
+    shippingType: {
+      type: String,
+      enum: Object.values(ShippingTypeEnum),
       default: null,
     },
     paidOn: { type: Date, default: null },

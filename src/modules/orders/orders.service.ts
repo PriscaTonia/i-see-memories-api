@@ -63,13 +63,15 @@ class OrderService {
   }
 
   // update shipping for an order by the user
-  async updateOrderShippingById(
-    id: string,
-    shippingDetails: { [key: string]: any }
-  ) {
+  async updateOrderShippingById(id: string, body: { [key: string]: any }) {
     return OrderModel.findByIdAndUpdate(
       id,
-      { $set: { shippingDetails } }, // Use $set to update the shippingDetails field
+      {
+        $set: {
+          shippingDetails: body.shippingDetails,
+          shippingType: body.shippingType,
+        },
+      }, // Use $set to update the shippingDetails field
       { new: true }
     ); // Return the updated document);
   }

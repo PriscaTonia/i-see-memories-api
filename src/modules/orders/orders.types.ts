@@ -37,6 +37,7 @@ export interface IOrderBase {
   orderNo: string;
   status: OrderStatusEnum;
   paymentStatus: PaymentStatusEnum;
+  shippingType: ShippingTypeEnum;
   shippingDetails: {
     name: string;
     country: string;
@@ -69,4 +70,11 @@ export enum PaymentStatusEnum {
   Pending = "Pending",
   Successful = "Successful",
   Failed = "Failed",
+}
+
+export enum ShippingTypeEnum {
+  island = "island",
+  mainland = "mainland",
+  home = "home",
+  pickup = "pickup",
 }

@@ -4,6 +4,7 @@ import ordersService from "./orders.service";
 import picturesService from "../pictures/pictures.service";
 import { Schema } from "mongoose";
 import { OrderStatusEnum } from "./orders.types";
+import shippingService from "../shipping/shipping.service";
 
 // get orders controller
 export const getAllOrders = async (
@@ -45,7 +46,16 @@ export const getAnOrder = async (
 
   order.items = itemsWithPictures;
 
-  res.send(response("Single Order Info", order));
+  const shippingPrice = await shippingService.getAShippingPrice(
+    order?.shippingType
+  );
+
+  res.send(
+    response("Single Order Info", {
+      ...order,
+      shippingPrice,
+    })
+  );
 };
 
 // update an order
