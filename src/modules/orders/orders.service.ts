@@ -7,10 +7,12 @@ class OrderService {
   async getOrders() {
     return await OrderModel.find({
       status: { $ne: OrderStatusEnum.Cart },
-    }).populate({
-      path: "items.productId", // Populates the `productId` field
-      select: "price pageCount isDeleted", // Select specific fields
-    });
+    })
+      .populate({
+        path: "items.productId", // Populates the `productId` field
+        select: "price pageCount isDeleted", // Select specific fields
+      })
+      .sort({ createdAt: -1 });
   }
 
   async getOrdersById(_id: string) {
